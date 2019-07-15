@@ -1,0 +1,43 @@
+﻿{
+  "name": "Linguify",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "This extension is the foundations of a web-browser extension that assists users with learning a new foreign speaking language.",
+
+  "permissions": [
+    "background",
+    "storage",
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "contextMenus"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [ "https://en.wikipedia.org/*", "https://old.reddit.com/*", "https://www.bing.com/*", "https://stackoverflow.com/*", "https://www.google.com/*", "https://www.reddit.com/*", "https://www.amazon.co.uk/*", "https://www.ebay.co.uk/*" ],
+      //"matches": [ "<all_urls>" ],
+      "js": [ "/js/script.js" ]
+    }
+  ],
+
+  "background": {
+    "scripts": [ "/js/eventPage.js" ],
+    "persistent": false
+  },
+
+  "icons": {
+    "100": "/img/logo-large.png",
+    "50": "/img/logo.png"
+  },
+
+  "web_accessible_resources": [
+    "modal-iframe.html"
+  ],
+
+  "browser_action": {
+    "default_title": "Linguify",
+    "default_icon": "/img/logo.png",
+    "default_popup": "popup.html"
+  }
+}
